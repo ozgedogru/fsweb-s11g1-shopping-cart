@@ -2,10 +2,10 @@ import React from "react";
 import { ScCartItem, ScCartItemDetails } from "./scParts";
 
 import { useContext } from "react";
-import { CartContext } from "../contexts/CartContext";
+import { ProductContext } from "../contexts/ProductContext";
 
 const Item = (props) => {
-  const { removeItem } = useContext(CartContext);
+  const { removeItem } = useContext(ProductContext);
 
   return (
     <ScCartItem>
@@ -14,7 +14,9 @@ const Item = (props) => {
       <ScCartItemDetails>
         <h2>{props.title}</h2>
         <p>$ {props.price}</p>
-        <button onClick={() => removeItem(props.id)}>Remove from cart</button>
+        <button onClick={() => removeItem(props.orderInd)}>
+          Remove from cart
+        </button>
       </ScCartItemDetails>
     </ScCartItem>
   );

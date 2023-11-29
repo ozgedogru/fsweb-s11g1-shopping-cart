@@ -3,7 +3,6 @@ import { ScCartCheckout } from "./scParts";
 
 // Components
 import Item from "./ShoppingCartItem";
-
 import { CartContext } from "../contexts/CartContext";
 
 const ShoppingCart = () => {
@@ -19,8 +18,12 @@ const ShoppingCart = () => {
 
   return (
     <div>
-      {cart.map((item) => (
-        <Item key={item.id} {...item} />
+      {cart.map((item, orderInd) => (
+        <Item
+          key={item.id.toString() + orderInd.toString()}
+          orderInd={orderInd}
+          {...item}
+        />
       ))}
 
       <ScCartCheckout>
